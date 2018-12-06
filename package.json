@@ -1,25 +1,31 @@
 {
-  "name": "trail-meet",
-  "version": "0.1.0",
-  "private": true,
+  "name": "reactify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.5",
+    "mongoose": "^5.3.14",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   },
+  "_comments": [
+    ""
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "install": "cd app && yarn",
+    "prestart": "yarn client:build",
+    "start": "node server.js",
+    "dev": "concurrently --kill-others \"yarn server:dev\" \"yarn client:start\"",
+    "server:start": "node server.js",
+    "server:dev": "nodemon server.js",
+    "client:start": "cd app && yarn start",
+    "client:build": "cd app && yarn build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
 }
