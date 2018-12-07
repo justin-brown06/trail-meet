@@ -27,7 +27,6 @@ class App extends Component {
               <Route path="/" exact component={Hook} />
               <Route path="/About" exact path = {About}/>
               <Route path="/MainPage" exact path = {MainPage}/>
-
             </Switch>
           </Router>
         </div>
