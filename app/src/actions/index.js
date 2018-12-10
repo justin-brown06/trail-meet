@@ -5,6 +5,11 @@ export const addTodo = text => ({
   text
 });
 
+export const toggleModal = (modalName = "") => ({
+  type: "CHANGE_MODAL",
+  payload: modalName
+});
+
 export const setVisibilityFilter = filter => ({
   type: "SET_VISIBILITY_FILTER",
   filter
