@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "^9.3.1",
+    "axios": "^0.18.0",
     "bulma": "^0.7.2",
     "chokidar-cli": "^1.2.1",
     "concurrently": "^4.1.0",

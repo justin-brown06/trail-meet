@@ -17,20 +17,21 @@ function tokenizer(user) {
   );
 }
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   res.send("Welcome to the v1 routes!");
 });
 
-router.get("/protected", requireAuth, function(req, res){
+router.get("/protected", requireAuth, function(req, res) {
   res.send("You have been protected!");
 });
 
-router.post("/signin", requireSignin, function (req, res) {
+router.post("/signin", requireSignin, function(req, res) {
   res.json({ token: tokenizer(req.user) });
 });
 
-router.post("/signup", function (req, res) {
-  const { email, password } = req.body;
+router.post("/signup", function(req, res) {
+  //res.send("You signed up!!!");
+  const { email, password, firstName, lastName } = req.body;
 
   if (!email || !password) {
     res.status(422).send({ error: "You must provide an email and password" });
@@ -43,7 +44,7 @@ router.post("/signup", function (req, res) {
         return res.status(422).send({ error: "Email already in use" });
       }
       //create new user object
-      const user = new db.User({ email, password });
+      const user = new db.User({ email, password, firstName, lastName });
       // save the user
       user.save().then(user => {
         console.log(user);

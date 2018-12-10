@@ -13,13 +13,13 @@ db(process.env.MONGODB_URI || "mongodb://localhost/test");
 
 // Express Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Serve Static
 app.use(express.static("app/build"));
 
 app.use(require("./routes"));
 
-app.listen(PORT, function(){
-    console.log(`App listening on PORT ${PORT}`);
+app.listen(PORT, function() {
+  console.log(`App listening on PORT ${PORT}`);
 });
