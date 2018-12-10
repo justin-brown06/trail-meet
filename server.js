@@ -8,7 +8,7 @@ const passport = require("passport");
 require("./services/passport");
 
 // Mongoose Connection
-const db = require("./config/connection");
+const db = require("/config/connection");
 db(process.env.MONGODB_URI || "mongodb://localhost/test");
 
 // Express Middleware
