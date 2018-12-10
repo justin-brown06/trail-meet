@@ -30,31 +30,31 @@ router.post("/signin", requireSignin, function(req, res) {
 });
 
 router.post("/signup", function(req, res) {
-  res.send("You signed up!!!");
-  // const { email, password } = req.body;
+  //res.send("You signed up!!!");
+  const { email, password, firstName, lastName } = req.body;
 
-  // if (!email || !password) {
-  //   res.status(422).send({ error: "You must provide an email and password" });
-  // }
+  if (!email || !password) {
+    res.status(422).send({ error: "You must provide an email and password" });
+  }
 
-  // db.User.findOne({ email })
-  //   .then(dbuser => {
-  //     // if the user exists return an error
-  //     if (dbuser) {
-  //       return res.status(422).send({ error: "Email already in use" });
-  //     }
-  //     //create new user object
-  //     const user = new db.User({ email, password });
-  //     // save the user
-  //     user.save().then(user => {
-  //       console.log(user);
-  //       // respond with the success if the user existed
-  //       res.json({ token: tokenizer(user) });
-  //     });
-  //   })
-  //   .catch(err => {
-  //     return next(err);
-  //   });
+  db.User.findOne({ email })
+    .then(dbuser => {
+      // if the user exists return an error
+      if (dbuser) {
+        return res.status(422).send({ error: "Email already in use" });
+      }
+      //create new user object
+      const user = new db.User({ email, password, firstName, lastName });
+      // save the user
+      user.save().then(user => {
+        console.log(user);
+        // respond with the success if the user existed
+        res.json({ token: tokenizer(user) });
+      });
+    })
+    .catch(err => {
+      return next(err);
+    });
 });
 
 module.exports = router;

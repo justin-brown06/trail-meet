@@ -11,7 +11,6 @@ function SignUpModal(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
-  const [rePassword, setRePassword] = useState("");
 
   function handleSubmit() {
     Axios.post("/v1/signup", {
@@ -19,7 +18,10 @@ function SignUpModal(props) {
       password,
       firstName,
       lastName
-    }).then(res => console.log(res.data));
+    }).then(res => {
+      console.log(res.data);
+      props.closeModal();
+    });
   }
 
   return (
@@ -79,19 +81,7 @@ function SignUpModal(props) {
               type="password"
             />
           </div>
-          <div className="field">
-            <label className="label" htmlFor="rePassword">
-              Re Enter Password
-            </label>
-            <input
-              placeholder="Re-Enter Password"
-              className="input"
-              name="rePassword"
-              value={rePassword}
-              onChange={e => setRePassword(e.target.value)}
-              type="password"
-            />
-          </div>
+
           <div className="has-text-right">
             <button onClick={props.closeModal} className="button is-primary">
               Cancel
