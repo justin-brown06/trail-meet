@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
+import Modal from "./Modal";
+import { Card, Header, Content } from "../common/Bulma/Card";
+import { connect } from "react-redux";
+import { toggleModal } from "../../actions";
 
 class Login extends Component {
 
@@ -6,14 +10,21 @@ class Login extends Component {
 
 render() {
     return (
-<div class="notification">
-  <button class="delete"></button>
-    <div class="field">
-    <div class="control">
-    <input class="input is-success" type="text" placeholder="Enter Zipcode"></input>
-    </div>
-    </div>
-<input type="submit"> Submit </input>
-</div>
+        <Modal>
+            <Card>
+               <Header>Add Your Zipcode</Header>
+                <Content>
+                    <div className="notification">
+                        <button className="delete"></button>
+                        <div className="field">
+                            <div className="control">
+                                <input className="input is-success" type="text" placeholder="Enter Zipcode"></input>
+                            </div>
+                        </div>
+                      <input type="submit"> Submit </input>
+                    </div>
+                </Content>
+            </Card>
+        </Modal>
     )
 };
