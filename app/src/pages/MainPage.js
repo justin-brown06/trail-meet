@@ -7,7 +7,7 @@ function Main() {
       <div className="hero-body">
         <div className="container">
           <h1 className="title">
-            Hero title
+            Trail Meet
           </h1>
         </div>
       </div>
