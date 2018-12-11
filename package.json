@@ -18,9 +18,9 @@
   "scripts": {
     "install": "cd app && yarn",
     "prestart": "yarn client:build",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "concurrently --kill-others \"yarn server:dev\" \"yarn client:start\"",
-    "server:start": "node server.js",
+    "server:start": "nodemon server.js",
     "server:dev": "nodemon server.js",
     "client:start": "cd app && yarn start",
     "client:build": "cd app && yarn build"
