@@ -1,5 +1,4 @@
 import React from "react";
-import Table from "../../common/Bulma/Table"
 
 
 function SavedHikes(props){
@@ -22,7 +21,6 @@ function SavedHikes(props){
               <div className="tile is-12 is-vertical is-parent">
                 <div className="tile is-child box">
                   <h1 className="title is-4">Saved Hikes</h1>
-                  <Table />
                 </div>
               </div>
 
