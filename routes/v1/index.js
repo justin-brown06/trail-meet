@@ -22,11 +22,15 @@ router.get("/", function(req, res) {
 });
 
 router.get("/protected", requireAuth, function(req, res) {
-  res.send("You have been protected!");
+  // res.send("You have been protected!");
+  res.json(req.user);
 });
 
 router.post("/signin", requireSignin, function(req, res) {
-  res.json({ token: tokenizer(req.user) });
+  res.json({
+    token: tokenizer(req.user),
+    reqSignIn: requireSignin
+  });
 });
 
 router.post("/signup", function(req, res) {
