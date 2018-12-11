@@ -20,7 +20,7 @@
     "redux": "^4.0.1"
   },
   "scripts": {
-    "prestart": "yarn sass:build",
+    
     "sass:build": "node-sass-chokidar --include-path ./node_modules/ ./src/styles/sass/index.scss -o ./src/styles/css/",
     "sass:watch": "node-sass-chokidar --include-path ./node_modules/ ./src/styles/sass/index.scss -o ./src/styles/css/ --watch",
     "start": "react-scripts start",
