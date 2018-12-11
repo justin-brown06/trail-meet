@@ -1,10 +1,13 @@
 import React from "react";
+import API from './API'
 import Table from "../../common/Bulma/Table"
 
 
 function Home(props){
   return(
     <div>
+      Welcome to the Home Page!
+      <API />
       <div className="App">
         <section className="hero">
           <div className="hero-body">
