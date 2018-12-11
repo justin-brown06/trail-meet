@@ -4,11 +4,12 @@
 // import { connect } from "react-redux";
 // import { toggleModal } from "../../actions";
 
-// class Login extends Component {
+
+// class alert extends Component {
 
 // }
-
-// render() {
+  
+//     render() {
 //     return (
 //         <Modal>
 //             <Card>
@@ -18,7 +19,10 @@
 //                         <button className="delete"></button>
 //                         <div className="field">
 //                             <div className="control">
-//                                 <input className="input is-success" type="text" placeholder="Enter Zipcode"></input>
+//                                 <input 
+//                                 className="input is-success" 
+//                                 type="text" 
+//                                 placeholder="Enter Zipcode"/>
 //                             </div>
 //                         </div>
 //                       <input type="submit"> Submit </input>
@@ -28,3 +32,5 @@
 //         </Modal>
 //     )
 // };
+
+// export default alert;

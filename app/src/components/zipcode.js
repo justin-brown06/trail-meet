@@ -3,8 +3,15 @@ import React from "react";
 function location(props) {
     return (
         <div>
-            <input class="input" type="text" placeholder="Enter Zipcode" ></input>
+            <input
+                handleChange={props.handleChange}
+                class="input"
+                type="text"
+                name={props.name}
+                placeholder="Enter Zipcode" />
             <a class="button">Submit</a>
         </div>
     )
-}
+};
+
+export default location;
