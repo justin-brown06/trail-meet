@@ -17,8 +17,6 @@ function tokenizer(user) {
   );
 }
 
-router.use("/auth", requireAuth, require("./auth"));
-
 router.get("/", function(req, res) {
   res.send("Welcome to the v1 routes!");
 });
