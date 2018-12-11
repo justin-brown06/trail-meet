@@ -46,6 +46,7 @@ UserSchema.methods.comparePassword = function(candidatePassword, callback) {
       return callback(err);
     }
     callback(null, isMatch);
+    console.log("You are Logged In");
   });
 };
 
