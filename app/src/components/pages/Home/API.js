@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Geocode from "react-geocode";
 
 class API extends Component {
     constructor() {
@@ -21,7 +22,7 @@ class API extends Component {
                 let trailNames = data.data.trails.map((trail) => {
                     return (
                         <div key={trail.name}>
-                            <img src={trail.imgSmall} />
+                            <p> ${trail.name} </p>
                         </div>
                     )
                 });
