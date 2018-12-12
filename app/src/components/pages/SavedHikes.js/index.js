@@ -25,7 +25,6 @@ function SavedHikes(props){
                   <h1 className="title is-4">Saved Hikes</h1>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
