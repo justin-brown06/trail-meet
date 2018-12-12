@@ -8,12 +8,14 @@ function SavedHikes(props){
         <section className="hero">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title">
+              <h1 className="title has-text-black">
                 Trail Meet!
               </h1>
             </div>
           </div>
         </section>
+
+        <br/>
 
         <section>
           <div className="container">
