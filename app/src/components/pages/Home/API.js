@@ -17,6 +17,7 @@ class API extends Component {
         navigator.geolocation.getCurrentPosition((position) => {
             let location = "lat=" + position.coords.latitude +
                 "&lon=" + position.coords.longitude;
+
             axios.get('https://www.hikingproject.com/data/get-trails?' + location + '&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30')
                 .then((data) => {
                     console.log(data);
@@ -49,11 +50,14 @@ class API extends Component {
                         {this.state.trails.map(trail => {
                             return (
                                 <tr>
-                                    <td>{trail.name}</td>
+                                    <td>
+                                    <a href={"https://www.hikingproject.com/trail/" + trail.id} target="_blank" rel="noopener noreferrer">{trail.name}
+                                    </a>
+                                    </td>
                                     <td>{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={trail.imgSqSmall}/></td>
+                                    <td><img src={trail.imgSqSmall} alt=""/></td>
                                 </tr>
                             )
                         })}
