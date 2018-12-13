@@ -6,11 +6,11 @@ import { createStore } from "redux";
 // Common Components
 import Navbar from "./components/common/Navbar/Navbar";
 import ModalController from "./components/modals";
+import RequireAuth from "./components/common/RequireAuth";
 
 // Pages
 import Home from "./components/pages/Home";
-import SavedHikes from "./components/pages/SavedHikes.js"
-
+import SavedHikes from "./components/pages/SavedHikes.js";
 
 import rootReducer from "./reducers";
 
@@ -28,7 +28,11 @@ function App(props) {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/savedHikes" component={SavedHikes}/>
+              <Route
+                exact
+                path="/savedHikes"
+                component={RequireAuth(SavedHikes)}
+              />
             </Switch>
           </div>
         </Router>
