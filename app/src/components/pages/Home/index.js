@@ -17,21 +17,21 @@ function Home(props) {
           </div>
 
         </section>
-        <br />
-        <section>
-          <div className="container">
-            <div className="tile is-ancestor">
-              <div className="tile is-12 is-vertical is-parent">
-                <div className="tile is-child box">
-                  <h1 className="title is-4 "> All near by hikes.</h1>
-                  <API />
-                </div>
+      </div>
+      <br />
+      <section>
+        <div className="container">
+          <div className="tile is-ancestor">
+            <div className="tile is-12 is-vertical is-parent">
+              <div className="tile is-child box">
+                <h1 className="title is-4 "> All near by hikes.</h1>
+                <API />
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    </div >
+        </div>
+      </section>
+    </div>
   )
 }
 
