@@ -15,7 +15,7 @@ function Home(props) {
               </h1>
               </div>
             </div>
-          </div>
+          
         </section>
         <br />
         <section>
@@ -28,12 +28,13 @@ function Home(props) {
                 </div>
               </div>
             </div>
+            </div>
           </section>
 
         </div>
       </div >
     )
-  }
+  
 }
 
 export default Home;
