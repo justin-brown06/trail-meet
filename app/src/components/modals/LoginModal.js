@@ -69,7 +69,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(toggleModal());
     },
     authorize() {
-      dispatch(authenticateUser());
+      dispatch(authenticateUser(true));
     }
   };
 }
