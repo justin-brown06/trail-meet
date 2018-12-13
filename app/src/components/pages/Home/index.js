@@ -9,13 +9,13 @@ function Home(props) {
         <section className="hero is-medium">
           <div className="hero-body">
             <div className="container">
-            <br/>
+              <br />
               <h1 className="title has-text-white">
                 Trail Meet's Home Page!
               </h1>
-              </div>
             </div>
           </div>
+
         </section>
         <br />
         <section>
@@ -28,12 +28,12 @@ function Home(props) {
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-        </div>
-      </div >
-    )
-  }
+      </div>
+    </div >
+  )
 }
 
 export default Home;
