@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import { Card, Header, Content } from "../common/Bulma/Card";
 import { connect } from "react-redux";
 import { toggleModal } from "../../actions";
+import { authenticateUser } from "../../actions";
 import Axios from "axios";
 
 function LoginModal(props) {
@@ -10,12 +11,14 @@ function LoginModal(props) {
   const [password, setPassword] = useState("");
 
   function handleSubmit() {
+    console.log("clicked");
     Axios.post("/v1/signin", {
       email,
       password
     }).then(res => {
       console.log(res.data);
       props.closeModal();
+      props.authorize();
     });
   }
 
@@ -64,6 +67,9 @@ function mapDispatchToProps(dispatch) {
   return {
     closeModal() {
       dispatch(toggleModal());
+    },
+    authorize() {
+      dispatch(authenticateUser(true));
     }
   };
 }
