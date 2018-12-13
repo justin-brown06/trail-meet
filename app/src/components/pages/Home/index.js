@@ -1,6 +1,6 @@
 import React from "react";
-import API from './API'
-import Table from "../../common/Bulma/Table"
+import API from './API';
+import Table from "../../common/Bulma/Table";
 import Zipcode from "../../Zipcode";
 
 
@@ -10,12 +10,20 @@ class Home extends React.Component {
     zipcode: ""
   }
 
+  // this.handleChange = this.handleChange.bind(this);
+  // this.handleSubmit = this. handleSubmit.bind(this);
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     });
   }
+//handleSubmit = (e) => {
+  // e.preventDefault();
+
+
+// }
 
   render() {
 
