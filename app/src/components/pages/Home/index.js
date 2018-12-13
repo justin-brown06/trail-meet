@@ -15,6 +15,7 @@ function Home(props) {
               </h1>
             </div>
           </div>
+
         </section>
       </div>
       <br />
