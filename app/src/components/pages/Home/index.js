@@ -25,12 +25,7 @@ function Home(props) {
                   <h1 className="title is-4 "> All near by hikes.</h1>
                   <API />
                 </div>
-                <div className="tile is-child box">
-                  <h1 className="title is-4">Hike you have selected</h1>
-                </div>
-
               </div>
-
             </div>
           </div>
         </section>
