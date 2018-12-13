@@ -30,7 +30,6 @@ function Home(props) {
             </div>
           </div>
         </section>
-
       </div>
     </div >
   )
