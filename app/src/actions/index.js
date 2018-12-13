@@ -26,7 +26,7 @@ export const VisibilityFilters = {
   SHOW_ACTIVE: "SHOW_ACTIVE"
 };
 
-export const authenticateUser = {
+export const authenticateUser = (isAuthenticated = true) => ({
   type: "AUTHENTICATED",
-  payload: true
-};
+  payload: isAuthenticated
+});
