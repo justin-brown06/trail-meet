@@ -13,6 +13,7 @@ function Home(props) {
               <h1 className="title has-text-white">
                 Trail Meet's Home Page!
               </h1>
+              </div>
             </div>
           </div>
         </section>
@@ -27,12 +28,12 @@ function Home(props) {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-      </div>
-    </div>
-  )
+        </div>
+      </div >
+    )
+  }
 }
 
 export default Home;
