@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { toggleModal } from "../../actions";
+import { toggleModal } from "./../../../actions";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.PNG";
+import logo from "./../../../assets/logo.PNG";
+import "./style.css"
 
 function Navbar(props) {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
-          <img alt="header-logo" src={logo} />
+        <a className="navbar-item" href="/">      
+          <img alt="header-logo" id="logo" src={logo} />
         </a>
       </div>
 
