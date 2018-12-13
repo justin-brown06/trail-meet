@@ -3,7 +3,7 @@ const initialState = false;
 const authenticated = (state = initialState, action) => {
   switch (action.type) {
     case "AUTHENTICATED":
-      return action.payload;
+      return true;
     default:
       return state;
   }
