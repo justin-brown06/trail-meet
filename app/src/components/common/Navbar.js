@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.PNG";
 
 function Navbar(props) {
-
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -16,18 +15,24 @@ function Navbar(props) {
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <Link to="/" className="navbar-item">Home</Link>
-          <Link to="/savedHikes" className="navbar-item">Saved Hikes</Link>
+          <Link to="/" className="navbar-item">
+            Home
+          </Link>
+          <Link to="/savedHikes" className="navbar-item">
+            Saved Hikes
+          </Link>
         </div>
       </div>
 
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
-            <button onClick={props.signUpModal}className="button is-primary">
+            <button onClick={props.signUpModal} className="button is-info">
               <strong>Sign up</strong>
             </button>
-            <button onClick={props.loginModal} className="button is-light">Log in</button>
+            <button onClick={props.loginModal} className="button is-info">
+              Log in
+            </button>
           </div>
         </div>
       </div>
@@ -35,16 +40,18 @@ function Navbar(props) {
   );
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     loginModal() {
       dispatch(toggleModal("LoginModal"));
     },
-    signUpModal(){
+    signUpModal() {
       dispatch(toggleModal("SignUpModal"));
     }
-  }
+  };
 }
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Navbar);
