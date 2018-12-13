@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 // Common Components
-import Navbar from "./components/common/Navbar";
+import Navbar from "./components/common/Navbar/Navbar";
 import ModalController from "./components/modals";
 import RequireAuth from "./components/common/RequireAuth";
 
