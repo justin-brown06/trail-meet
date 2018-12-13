@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { toggleModal } from "./../../../actions";
 import { Link } from "react-router-dom";
 import logo from "./../../../assets/logo.PNG";
-import "./style.css"
 
 function Navbar(props) {
   return (
