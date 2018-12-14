@@ -16,7 +16,7 @@ function DifficultyModal(props) {
                 <Content>
                     <div className="app">
                         <div className="container">
-                            <div className="columns is-multiple">
+                            <div className="columns">
                                 <div className="column is-narrow">
                                 <h3>Easy:
                                 <img className="icon" src={green}/> </h3>

@@ -42,7 +42,7 @@ class API extends Component {
                     <thead>
                         <tr>
                             <th><abbr title="Trail">Trail Name</abbr></th>
-                            <th onClick={this.props.DifficultyModal}><abbr title="Difficulty"> <a>Difficulty</a></abbr></th>
+                            <th onClick={this.props.DifficultyModal}><abbr title="Difficulty"> <a className="is-white">Difficulty</a></abbr></th>
                             <th><abbr title="Length">Length (miles)</abbr></th>
                             <th><abbr title="Location">Location </abbr></th>
                             <th><abbr title="image">Image</abbr></th>
