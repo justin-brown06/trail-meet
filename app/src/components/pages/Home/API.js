@@ -54,11 +54,6 @@ class API extends Component {
                         {this.state.trails.map(trail => {
                             return (
                                 <tr>
-                                    <td> <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a></td>
-                                    <td>{trail.difficulty}</td>
-                                    <td>{trail.length}</td>
-                                    <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={trail.imgSqSmall} alt="no image" /></td>
                                     <td>
                                         <Link to={`/${trail.id}`}> {trail.name}</Link>
                                         <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a>
