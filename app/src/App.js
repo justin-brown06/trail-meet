@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -11,6 +11,7 @@ import RequireAuth from "./components/common/RequireAuth";
 // Pages
 import Home from "./components/pages/Home";
 import SavedHikes from "./components/pages/SavedHikes.js";
+import Meetup from "./components/pages/Meetup"
 
 import rootReducer from "./reducers";
 
@@ -33,6 +34,7 @@ function App(props) {
                 path="/savedHikes"
                 component={RequireAuth(SavedHikes)}
               />
+              <Route path="/:id" component={Meetup} />
             </Switch>
           </div>
         </Router>
