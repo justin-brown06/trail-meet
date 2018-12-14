@@ -1,6 +1,8 @@
 import React from "react";
 import API from './API'
 import "./style/style.css"
+import ZipCode from "../../Zipcode";
+
 
 function Home(props) {
   return (
@@ -9,13 +11,13 @@ function Home(props) {
         <section className="hero is-medium">
           <div className="hero-body">
             <div className="container">
-            <br/>
+              <br />
               <h1 className="title has-text-white">
                 Trail Meet's Home Page!
               </h1>
-              </div>
             </div>
-          
+          </div>
+
         </section>
         <br />
         <section>
@@ -23,19 +25,20 @@ function Home(props) {
             <div className="tile is-ancestor">
               <div className="tile is-12 is-vertical is-parent">
                 <div className="tile is-child box">
-                  <h1 className="title is-4 "> All near by hikes.</h1>
-                  <API />
+                    <ZipCode />
+                    <h1 className="title is-4 "> All near by hikes.</h1>
+                    <API />
+                </div>
                 </div>
               </div>
-            </div>
             </div>
           </section>
 
         </div>
       </div >
-    )
+      )
+    
+  }
   
-}
-
-export default Home;
-
+  export default Home;
+  

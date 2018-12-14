@@ -10,6 +10,7 @@
 // }
   
 //     render() {
+//         const {text, onClose} = this.props;
 //     return (
 //         <Modal>
 //             <Card>
@@ -25,7 +26,8 @@
 //                                 placeholder="Enter Zipcode"/>
 //                             </div>
 //                         </div>
-//                       <input type="submit"> Submit </input>
+//                       <input type="submit" onClick={() => this.props}>
+//                      Submit </input>
 //                     </div>
 //                 </Content>
 //             </Card>
@@ -34,3 +36,4 @@
 // };
 
 // export default alert;
+
