@@ -52,7 +52,7 @@ class API extends Component {
                                 <tr>
                                     <td>
                                         <Link to={`/${trail.id}`}> {trail.name}</Link>
-                                        <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a>
+                                        <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> <button className="button is-rounded is-dark is-small">Additional Information</button></a>
                                     </td>
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
