@@ -1,7 +1,7 @@
 import React from "react";
 import API from './API'
 import "./style/style.css"
-import ZipCode from "../../Zipcode";
+
 
 
 function Home(props) {
@@ -25,7 +25,6 @@ function Home(props) {
             <div className="tile is-ancestor">
               <div className="tile is-12 is-vertical is-parent">
                 <div className="tile is-child box">
-                    <ZipCode />
                     <h1 className="title is-4 "> All near by hikes.</h1>
                     <API />
                 </div>
