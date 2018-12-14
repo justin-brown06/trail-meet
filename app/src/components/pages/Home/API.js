@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 // import Geocode from "react-geocode";
 
 class API extends Component {
@@ -50,12 +51,13 @@ class API extends Component {
                             return (
                                 <tr>
                                     <td>
+                                        <Link to={`/${trail.id}`}> {trail.name}</Link>
                                         <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a>
                                     </td>
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={trail.imgSqSmall} /></td>
+                                    <td><img src={trail.imgSqSmall} alt=""/></td>
                                 </tr>
                             )
                         })}
