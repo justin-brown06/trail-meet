@@ -34,7 +34,9 @@ function App(props) {
                 path="/savedHikes"
                 component={RequireAuth(SavedHikes)}
               />
-              <Route path="/:id" component={Meetup} />
+              <Route path="/:id"
+              component={RequireAuth(Meetup)}
+              />
             </Switch>
           </div>
         </Router>
