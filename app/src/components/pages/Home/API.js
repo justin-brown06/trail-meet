@@ -4,6 +4,7 @@ import axios from "axios";
 import { toggleModal } from "../../../actions";
 import "./style/style.css"
 
+import { Link } from "react-router-dom";
 // import Geocode from "react-geocode";
 
 class API extends Component {
@@ -21,6 +22,7 @@ class API extends Component {
         navigator.geolocation.getCurrentPosition((position) => {
             let location = "lat=" + position.coords.latitude +
                 "&lon=" + position.coords.longitude;
+
             axios.get('https://www.hikingproject.com/data/get-trails?' + location + '&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30')
                 .then((data) => {
                     console.log(data);
@@ -57,6 +59,14 @@ class API extends Component {
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
                                     <td><img src={trail.imgSqSmall} alt="no image" /></td>
+                                    <td>
+                                        <Link to={`/${trail.id}`}> {trail.name}</Link>
+                                        <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a>
+                                    </td>
+                                    <td >{trail.difficulty}</td>
+                                    <td>{trail.length}</td>
+                                    <td>{trail.latitude}, {trail.longitude}</td>
+                                    <td><img src={trail.imgSqSmall} alt=""/></td>
                                 </tr>
                             )
                         })}
