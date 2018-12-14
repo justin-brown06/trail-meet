@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
+import { toggleModal } from "../../../actions";
+import "./style/style.css"
+
 // import Geocode from "react-geocode";
 
 class API extends Component {
@@ -38,7 +42,7 @@ class API extends Component {
                     <thead>
                         <tr>
                             <th><abbr title="Trail">Trail Name</abbr></th>
-                            <th><abbr title="Difficulty">Difficulty</abbr></th>
+                            <th onClick={this.props.DifficultyModal}><abbr title="Difficulty"> <a>Difficulty</a></abbr></th>
                             <th><abbr title="Length">Length (miles)</abbr></th>
                             <th><abbr title="Location">Location </abbr></th>
                             <th><abbr title="image">Image</abbr></th>
@@ -48,11 +52,11 @@ class API extends Component {
                         {this.state.trails.map(trail => {
                             return (
                                 <tr>
-                                    <td> <a target="_blank" rel="noopener noreferrer"  href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a></td>
-                                    <td >{trail.difficulty}</td>
+                                    <td> <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a></td>
+                                    <td>{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={trail.imgSqSmall} /></td>
+                                    <td><img src={trail.imgSqSmall} alt="no image" /></td>
                                 </tr>
                             )
                         })}
@@ -63,4 +67,13 @@ class API extends Component {
     };
 };
 
-export default API;
+function mapDispatchToProps(dispatch) {
+    return {
+        DifficultyModal() {
+            console.log(toggleModal("DifficultyModal"))
+            dispatch(toggleModal("DifficultyModal"));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(API);
