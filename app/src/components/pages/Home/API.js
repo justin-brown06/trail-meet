@@ -22,11 +22,11 @@ class API extends Component {
                     console.log(data);
                     for (let i = 0; i < data.data.trails.length; i++) {
                         // console.log(data.data.trails[i].name)
-                    };
 
+                    };
                     this.setState({
                         trails: data.data.trails
-                    })
+                    });
                 });
         });
     };
@@ -34,7 +34,6 @@ class API extends Component {
     render() {
         return (
             <div className="App">
-
                 <table className="table is-fullwidth">
                     <thead>
                         <tr>
@@ -49,11 +48,11 @@ class API extends Component {
                         {this.state.trails.map(trail => {
                             return (
                                 <tr>
-                                    <td>{trail.name}</td>
-                                    <td>{trail.difficulty}</td>
+                                    <td> <a target="_blank" rel="noopener noreferrer"  href={"https://www.hikingproject.com/trail/" + trail.id}> {trail.name} </a></td>
+                                    <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={trail.imgSqSmall}/></td>
+                                    <td><img src={trail.imgSqSmall} /></td>
                                 </tr>
                             )
                         })}

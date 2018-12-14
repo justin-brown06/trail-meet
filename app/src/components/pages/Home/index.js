@@ -15,7 +15,6 @@ function Home(props) {
               </h1>
             </div>
           </div>
-
         </section>
       </div>
       <br />
@@ -31,8 +30,7 @@ function Home(props) {
           </div>
         </div>
       </section>
-
-    </div >
+    </div>
   )
 }
 
