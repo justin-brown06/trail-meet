@@ -6,6 +6,8 @@ const passport = require("passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
 
+const hikesController = require("../../controllers/userController");
+
 function tokenizer(user) {
   const timestamp = new Date().getTime();
   return jwt.encode(
@@ -32,6 +34,8 @@ router.post("/signin", requireSignin, function(req, res) {
     reqSignIn: requireSignin
   });
 });
+
+router.put("/saveHike/", requireAuth, hikesController.update);
 
 router.post("/signup", function(req, res) {
   //res.send("You signed up!!!");

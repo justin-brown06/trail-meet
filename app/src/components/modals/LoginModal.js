@@ -17,6 +17,7 @@ function LoginModal(props) {
       password
     }).then(res => {
       console.log(res.data);
+      Axios.defaults.headers.common["Authorization"] = res.data.token;
       props.closeModal();
       props.authorize();
     });
