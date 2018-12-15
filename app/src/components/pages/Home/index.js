@@ -23,7 +23,7 @@ function Home(props) {
           <div className="tile is-ancestor">
             <div className="tile is-12 is-vertical is-parent">
               <div className="tile is-child box">
-                <h1 className="title is-4 "> All near by hikes.</h1>
+                <h1 className="title is-4 "> Find a trail!</h1>
                 <API />
               </div>
             </div>

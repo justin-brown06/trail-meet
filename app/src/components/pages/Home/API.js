@@ -86,9 +86,8 @@ class API extends Component {
                             return (
                                 <tr>
                                     <td>
-                                        <Link to={`/${trail.id}`}> {trail.name}</Link>
+                                        <Link to={`/${trail.id}`}> <h1>{trail.name}</h1></Link>
                                         <a target="_blank" rel="noopener noreferrer" href={"https://www.hikingproject.com/trail/" + trail.id}>
-                                            <br />
                                             <br />
                                             <button className="button is-rounded is-dark is-small">Additional Information</button></a>
                                     </td>
