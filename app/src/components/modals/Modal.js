@@ -5,7 +5,7 @@ import { toggleModal } from "../../actions";
 function Modal(props) {
   return (
     <div className="modal is-active">
-      <div onClick={props.closeModal} className="modal-background" />
+      <div onClick={props.closeModal} className="modal-background is-small" />
       <div className="modal-content">{props.children}</div>
       <button
         onClick={props.closeModal}
