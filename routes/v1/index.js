@@ -37,6 +37,24 @@ router.post("/signin", requireSignin, function(req, res) {
 
 router.put("/saveHike/", requireAuth, hikesController.update);
 
+router.get("/savedHikes", requireAuth, function(req, res) {
+  const url =
+    "https://www.hikingproject.com/data/get-trails-by-id?ids=7001635,7002742,7000108,7002175,7005207&key=200394657-1ebddf3d823768d96c230dd00cd31c30";
+
+  axios
+    .get(url, {
+      headers: { "Access-Control-Allow-Origin": "*" }
+    })
+    .then(response => {
+      console.log(response);
+      res.send(response); // <= send data to the client
+    })
+    .catch(err => {
+      console.log(err);
+      res.send({ err }); // <= send error
+    });
+});
+
 router.post("/signup", function(req, res) {
   //res.send("You signed up!!!");
   const { email, password, firstName, lastName } = req.body;

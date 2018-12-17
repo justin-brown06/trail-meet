@@ -29,11 +29,7 @@ function Home(props) {
         </div>
       </section>
     </div>
-<<<<<<< HEAD
   );
-=======
-  )
->>>>>>> 7c9b3b45b2a2c3688e2d32b84b5bda04f9a49e0a
 }
 
 export default Home;
