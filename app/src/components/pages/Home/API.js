@@ -46,9 +46,9 @@ class API extends Component {
                 // console.log(data);
                 for (let i = 0; i < data.data.trails.length; i++) {
                     // console.log(data.data.trails[i].name)
-                    let coords= [data.data.trails[i].latitude, data.data.trails[i].longitude]
+                    let coords = [data.data.trails[i].latitude, data.data.trails[i].longitude]
                     console.log(coords);
-                    this.getAddress(coords);
+                    // this.getAddress(coords);
                 };
                 this.setState({
                     trails: data.data.trails
@@ -84,10 +84,13 @@ class API extends Component {
     render() {
         return (
             <div className="App">
-                <div id="zip">
-                    <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
-                    <button className="button" onClick={this.handleSubmit} >Submit</button>
-                </div>
+                <section className="level"> <h1 className="title level-left">Find a trail!</h1>
+                    <div id="zip" className="level-right">
+                        <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
+                        <button className="button is-info" onClick={this.handleSubmit} >Submit</button>
+                    </div>
+                </section>
+                <section>
                 <table className="table is-fullwidth">
                     <thead>
                         <tr>
@@ -117,6 +120,7 @@ class API extends Component {
                         })}
                     </tbody>
                 </table>
+                </section>
             </div>
         )
     };

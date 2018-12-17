@@ -10,14 +10,19 @@ height: 100%;
 }
 
 #zip{
-    width: 10%;
+    width: 20%;
 }
 
 @media screen and (max-width: 760px) {
- #zip {
+ .level {
      display: flex;
  }
+ .table {
+     table-layout: fixed;
+     font-size: 12px;
+ }
 }
+
 
 td{
     font-family: 'Comfortaa', cursive;
