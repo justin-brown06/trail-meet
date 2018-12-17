@@ -5,6 +5,9 @@ const config = require("../../config");
 const passport = require("passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
+const axios = require("axios");
+
+const hikesController = require("../../controllers/userController");
 
 function tokenizer(user) {
   const timestamp = new Date().getTime();
@@ -30,6 +33,32 @@ router.post("/signin", requireSignin, function(req, res) {
   res.json({
     token: tokenizer(req.user),
     reqSignIn: requireSignin
+  });
+});
+
+router.put("/saveHike/", requireAuth, hikesController.update);
+
+router.get("/savedHikes", requireAuth, function(req, res) {
+  // We are going to have a req.user
+  // Since we have a user we can go ahead and query for their likes
+  db.User.findById(req.user._id).then(dbUser => {
+    const hikeIds = dbUser.savedHikes;
+    if (hikeIds.length === 0) {
+      res.json({ hikes: [] });
+    } else {
+      const url = `https://www.hikingproject.com/data/get-trails-by-id?ids=${hikeIds.join(
+        ","
+      )}&key=200394657-1ebddf3d823768d96c230dd00cd31c30`;
+
+      axios
+        .get(url)
+        .then(response => {
+          res.json({ trails: response.data.trails });
+        })
+        .catch(err => {
+          res.send({ err }); // <= send error
+        });
+    }
   });
 });
 

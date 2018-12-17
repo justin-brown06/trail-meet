@@ -1,43 +1,41 @@
-import React from "react";
-// import Zipcode from "../../Zipcode";
+// import React from "react";
+// import axios from "axios";
 
-import Geocode from "react-geocode"
+// //zip code will override current location pull
+//  class ZipCode extends React.Component {
+//   state = {
+//     zip: ""
+//   }
+
+//   handleInputChange = event => {
+//     const { name, value } = event.target
+//     this.setState({
+//     [name]: value
+//   });
+//   }
+
+//   getHikes(){
+//     axios.get(`https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`) 
+//     .then(res => 
+//       console.log(res.data.output[0].latitude, res.data.output[0].longitude)
+//     )
+//   }
+
+//   handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log(event)
+//     this.getHikes();
+//   }
 
 
+//   render() {
+//     return (
+//       <div>
+//       <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
+//       <a className="button" onClick={this.handleSubmit} >Submit</a>
+//       </div>
+//     )
+//   }
+// }
 
-function search(zip) {
-    Geocode.fromAddress(zip).then(
-        response => {
-            const { lat, lng } = response.results[0].geometry.location;
-            console.log(lat, lng);
-        },
-        error => {
-            console.error(error);
-        }
-    );
-}
-
-class location extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div>
-                <input
-                    handleChange={props.handleChange}
-                    class="input"
-                    type="text"
-                    name={props.name}
-                    placeholder="Enter Zipcode" />
-                <a class="button"
-                    onClick={this.search()}
-                >Submit</a>
-            </div>
-        )
-    }
-};
-
-export default location;
+// export default ZipCode;
