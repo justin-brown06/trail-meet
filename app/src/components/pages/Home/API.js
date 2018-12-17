@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { toggleModal } from "../../../actions";
+import "./style/style.css"
+
+import trail1 from './assets/trail1.jpg'
+
+
+import { Link } from "react-router-dom";
+// import Geocode from "react-geocode";
 
 class API extends Component {
     constructor() {
@@ -14,7 +22,6 @@ class API extends Component {
         };
     };
 
-    //
     componentDidMount() {
 
         navigator.geolocation.getCurrentPosition((position) => {
@@ -60,39 +67,8 @@ class API extends Component {
             });
     };
 
-    handleInputChange = event => {
-        const { name, value } = event.target
-        this.setState({
-            [name]: value
-        });
-    }
-
-    getHikes() {
-               
-        let currentLocation = "lat=" + this.state.location[0] +
-        "&lon=" + this.state.location[1];
-        axios.get('https://www.hikingproject.com/data/get-trails?' + currentLocation + '&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30')
-        .then((data) => {
-            console.log(data);
-            for (let i = 0; i < data.data.trails.length; i++) {
-                // console.log(data.data.trails[i].name)
-            };
-            this.setState({
-                trails: data.data.trails
-            });
-        });
-            
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(event)
-        axios.get(`https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`)
-        .then(res => {
-            this.setState({location: [res.data.output[0].latitude, res.data.output[0].longitude]})
-
-            this.getHikes(); 
-        })
+    checkImg = (trail) => { 
+       return trail.imgSqSmall ? trail.imgSqSmall : trail1;
     }
 
     render() {
@@ -125,7 +101,7 @@ class API extends Component {
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={trail.imgSqSmall} alt="" /></td>
+                                    <td><img src={this.checkImg(trail)} alt="" /></td>
                                 </tr>
                             )
                         })}
