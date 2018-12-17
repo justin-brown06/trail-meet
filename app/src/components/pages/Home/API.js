@@ -84,7 +84,7 @@ class API extends Component {
     render() {
         return (
             <div className="App">
-                <div>
+                <div id="zip">
                     <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
                     <button className="button" onClick={this.handleSubmit} >Submit</button>
                 </div>
@@ -99,7 +99,7 @@ class API extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.trails.map(trail => {
+                        {this.state.trails.map((trail, i) => {
                             return (
                                 <tr>
                                     <td>
@@ -110,7 +110,7 @@ class API extends Component {
                                     </td>
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
-                                    <td>{this.state.address}</td>
+                                    <td>{this.state.address[i]}</td>
                                     <td><img src={trail.imgSqSmall} alt="" /></td>
                                 </tr>
                             )
