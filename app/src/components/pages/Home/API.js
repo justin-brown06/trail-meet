@@ -42,7 +42,7 @@ class API extends Component {
 
         axios.get('https://www.hikingproject.com/data/get-trails?' + location + '&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30')
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 for (let i = 0; i < data.data.trails.length; i++) {
                     // console.log(data.data.trails[i].name)
 
@@ -52,6 +52,27 @@ class API extends Component {
                 });
             });
     };
+
+    getAddress() {
+        axios.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0&callback=initMap")
+        .then((google) => {
+            let lat = this.state.trail.latitude;
+            let lng = this.state.trail.longitude;
+            let latlng = new google.maps.LatLng(lat, lng);
+            let geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                console.log(results)
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                       console.log("Location: " + results[1].formatted_address);
+                    }
+                } else {
+                    console.log("status err");
+                };
+            });
+        })
+    };
+
 
     handleSubmit = event => {
         event.preventDefault();
@@ -108,7 +129,7 @@ class API extends Component {
 function mapDispatchToProps(dispatch) {
     return {
         DifficultyModal() {
-            console.log(toggleModal("DifficultyModal"))
+            // console.log(toggleModal("DifficultyModal"))
             dispatch(toggleModal("DifficultyModal"));
         }
     }
