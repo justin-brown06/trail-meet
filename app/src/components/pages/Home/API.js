@@ -88,7 +88,7 @@ class API extends Component {
     render() {
         return (
             <div className="App">
-                <div>
+                <div id="zip">
                     <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
                     <button className="button" onClick={this.handleSubmit} >Submit</button>
                 </div>

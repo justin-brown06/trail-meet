@@ -6,7 +6,7 @@ import logo from "./../../../assets/logo.PNG";
 
 function Navbar(props) {
   return (
-    <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation" >
       <div className="navbar-brand">
         <a className="navbar-item" href="/">      
           <img alt="header-logo" id="logo" src={logo} />
@@ -36,6 +36,7 @@ function Navbar(props) {
           </div>
         </div>
       </div>
+
     </nav>
   );
 }

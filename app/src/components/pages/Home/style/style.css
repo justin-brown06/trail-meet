@@ -13,6 +13,14 @@ td{
     font-family: 'Comfortaa', cursive;
 }
 
+@media screen and (max-width: 760px) {
+ #zip {
+     display: flex;
+ }
+ 
+}
+
+
 
 
 

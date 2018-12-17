@@ -21,9 +21,9 @@ function Home(props) {
       <section>
         <div className="container">
           <div className="tile is-ancestor">
-            <div className="tile is-12 is-vertical is-parent">
-              <div className="tile is-child box">
-                <h1 className="title is-4 "> Find a trail!</h1>
+            <div className="tile is-12 is-parent">
+              <div id="trailsTile" className="tile is-child box">
+                <h1 className="title is-4"> Find a trail!</h1>
                 <API />
               </div>
             </div>
