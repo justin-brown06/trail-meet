@@ -12,24 +12,20 @@ function DifficultyModal(props) {
     return (
         <Modal>
             <Card>
-                <Header>Difficulty!</Header>
+                <Header>Difficulty Legend:</Header>
                 <Content>
-                    <div className="app">
-                        <div className="container">
-                            <div className="columns">
-                                <div className="column is-narrow">
-                                <h3>Easy:
-                                <img className="icon" src={green}/> </h3>
-                                </div>
-                                <div className="column is-narrow">
-                                <h3>Intermediate:
-                                <img className="icon" src={blue}/></h3>
-                                </div>
-                                <div className="column is-narrow">
-                                <h3>Difficult:
-                                <img className="icon" src={black}/> </h3>
-                                </div>
-                            </div>
+                    <div className="columns is-centered">
+                        <div className="column is-narrow">
+                            <h3>Easy = &nbsp;
+                                    <img className="icon" src={green} alt="green" /> </h3>
+                        </div>
+                        <div className="column is-narrow">
+                            <h3>Intermediate = &nbsp;
+                                    <img className="icon" src={blue} alt="blue" /></h3>
+                        </div>
+                        <div className="column is-narrow">
+                            <h3>Difficult = &nbsp;
+                                    <img className="icon" src={black} alt="black" /> </h3>
                         </div>
                     </div>
                 </Content>
