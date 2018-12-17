@@ -13,7 +13,7 @@ function Navbar(props) {
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu nav-left">
+      <div id="navbarBasicExample" className="navbar-brand nav-left">
         <div className="navbar-start">
           <Link to="/" className="navbar-item">
             Home

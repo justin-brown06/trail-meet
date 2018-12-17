@@ -53,25 +53,25 @@ class API extends Component {
             });
     };
 
-    getAddress() {
-        axios.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0&callback=initMap")
-        .then((google) => {
-            let lat = this.state.trail.latitude;
-            let lng = this.state.trail.longitude;
-            let latlng = new google.maps.LatLng(lat, lng);
-            let geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                console.log(results)
-                if (status === google.maps.GeocoderStatus.OK) {
-                    if (results[1]) {
-                       console.log("Location: " + results[1].formatted_address);
-                    }
-                } else {
-                    console.log("status err");
-                };
-            });
-        })
-    };
+    // getAddress() {
+        //     axios.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0&callback=initMap")
+        //     .then((google) => {
+            //         let latlng = new google.maps.LatLng(lat, lng);
+            //         let geocoder = new google.maps.Geocoder();
+            //         let lat = this.state.trail.latitude;
+            //         let lng = this.state.trail.longitude;
+            //         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+    //             console.log(results)
+    //             if (status === google.maps.GeocoderStatus.OK) {
+    //                 if (results) {
+    //                    console.log("Location: " + results.formatted_address);
+    //                 }
+    //             } else {
+    //                 console.log("status err");
+    //             };
+    //         });
+    //     }) 
+    // };
 
 
     handleSubmit = event => {
