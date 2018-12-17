@@ -15,7 +15,8 @@ class API extends Component {
             lat: "",
             lon: "",
             zip: "",
-            location: []
+            location: [],
+            address: []
         };
     };
 
@@ -34,7 +35,7 @@ class API extends Component {
         this.setState({
             [name]: value
         });
-    }
+    };
 
     getHikes() {
         let location = "lat=" + this.state.location[0] +
@@ -42,16 +43,20 @@ class API extends Component {
 
         axios.get('https://www.hikingproject.com/data/get-trails?' + location + '&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30')
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 for (let i = 0; i < data.data.trails.length; i++) {
                     // console.log(data.data.trails[i].name)
-
+                    let coords= [data.data.trails[i].latitude, data.data.trails[i].longitude]
+                    console.log(coords);
+                    this.getAddress(coords);
                 };
                 this.setState({
                     trails: data.data.trails
                 });
-            });
+            })
     };
+
+
 
     handleSubmit = event => {
         event.preventDefault();
@@ -60,7 +65,19 @@ class API extends Component {
                 this.setState({
                     location: [res.data.output[0].latitude, res.data.output[0].longitude]
                 })
-                this.getHikes();
+                this.getHikes()
+            });
+    };
+
+    getAddress(coords) {
+        let location = `${coords[0]},${coords[1]}`
+
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+            .then((data) => {
+                console.log(data.data.results[0].formatted_address)
+                this.setState({
+                    address: [...this.state.address, data.data.results[0].formatted_address]
+                })
             });
     };
 
@@ -93,7 +110,7 @@ class API extends Component {
                                     </td>
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
-                                    <td>{trail.latitude}, {trail.longitude}</td>
+                                    <td>{this.state.address}</td>
                                     <td><img src={trail.imgSqSmall} alt="" /></td>
                                 </tr>
                             )
