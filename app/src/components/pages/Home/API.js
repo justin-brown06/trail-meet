@@ -47,7 +47,7 @@ class API extends Component {
                 for (let i = 0; i < data.data.trails.length; i++) {
                     // console.log(data.data.trails[i].name)
                     let coords = [data.data.trails[i].latitude, data.data.trails[i].longitude]
-                    console.log(coords);
+                    // console.log(coords);
                     // this.getAddress(coords);
                 };
                 this.setState({
@@ -69,17 +69,17 @@ class API extends Component {
             });
     };
 
-    getAddress(coords) {
-        let location = `${coords[0]},${coords[1]}`
+    // getAddress(coords) {
+    //     let location = `${coords[0]},${coords[1]}`
 
-        axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
-            .then((data) => {
-                console.log(data.data.results[0].formatted_address)
-                this.setState({
-                    address: [...this.state.address, data.data.results[0].formatted_address]
-                })
-            });
-    };
+    //     axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+    //         .then((data) => {
+    //             // console.log(data.data.results[0].formatted_address)
+    //             this.setState({
+    //                 address: [...this.state.address, data.data.results[0].formatted_address]
+    //             })
+    //         });
+    // };
 
     render() {
         return (
