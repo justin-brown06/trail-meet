@@ -11,11 +11,11 @@ export function Header({ children, className = "", icon }) {
     <header className="card-header">
       <p className={`card-header-title ${className}`}>{children}</p>
       {icon &&
-        <a className="card-header-icon" aria-label="more options">
+        <div className="card-header-icon" aria-label="more options">
           <span className="icon">
             <i className="fas fa-angle-down" aria-hidden="true"></i>
           </span>
-        </a>
+        </div>
       }
     </header>
   );
