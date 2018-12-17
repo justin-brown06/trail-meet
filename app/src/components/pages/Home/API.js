@@ -15,7 +15,8 @@ class API extends Component {
             lat: "",
             lon: "",
             zip: "",
-            location: []
+            location: [],
+            address: []
         };
     };
 
@@ -34,7 +35,7 @@ class API extends Component {
         this.setState({
             [name]: value
         });
-    }
+    };
 
     getHikes() {
         let location = "lat=" + this.state.location[0] +
@@ -45,33 +46,16 @@ class API extends Component {
                 // console.log(data);
                 for (let i = 0; i < data.data.trails.length; i++) {
                     // console.log(data.data.trails[i].name)
-
+                    let coords= [data.data.trails[i].latitude, data.data.trails[i].longitude]
+                    console.log(coords);
+                    this.getAddress(coords);
                 };
                 this.setState({
                     trails: data.data.trails
                 });
-            });
+            })
     };
 
-    // getAddress() {
-        //     axios.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0&callback=initMap")
-        //     .then((google) => {
-            //         let latlng = new google.maps.LatLng(lat, lng);
-            //         let geocoder = new google.maps.Geocoder();
-            //         let lat = this.state.trail.latitude;
-            //         let lng = this.state.trail.longitude;
-            //         geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-    //             console.log(results)
-    //             if (status === google.maps.GeocoderStatus.OK) {
-    //                 if (results) {
-    //                    console.log("Location: " + results.formatted_address);
-    //                 }
-    //             } else {
-    //                 console.log("status err");
-    //             };
-    //         });
-    //     }) 
-    // };
 
 
     handleSubmit = event => {
@@ -81,14 +65,26 @@ class API extends Component {
                 this.setState({
                     location: [res.data.output[0].latitude, res.data.output[0].longitude]
                 })
-                this.getHikes();
+                this.getHikes()
+            });
+    };
+
+    getAddress(coords) {
+        let location = `${coords[0]},${coords[1]}`
+
+        axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+            .then((data) => {
+                console.log(data.data.results[0].formatted_address)
+                this.setState({
+                    address: [...this.state.address, data.data.results[0].formatted_address]
+                })
             });
     };
 
     render() {
         return (
             <div className="App">
-                <div id="zip">
+                <div>
                     <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
                     <button className="button" onClick={this.handleSubmit} >Submit</button>
                 </div>
@@ -114,7 +110,7 @@ class API extends Component {
                                     </td>
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
-                                    <td>{trail.latitude}, {trail.longitude}</td>
+                                    <td>{this.state.address}</td>
                                     <td><img src={trail.imgSqSmall} alt="" /></td>
                                 </tr>
                             )
