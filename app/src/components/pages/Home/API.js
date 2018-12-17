@@ -44,19 +44,19 @@ class API extends Component {
     let location =
       "lat=" + this.state.location[0] + "&lon=" + this.state.location[1];
 
-    axios
-      .get(
-        "https://www.hikingproject.com/data/get-trails?" +
-          location +
-          "&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30"
-      )
+    fetch(
+      "https://www.hikingproject.com/data/get-trails?" +
+        location +
+        "&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30"
+    )
+      .then(res => res.json())
       .then(data => {
         console.log(data);
-        for (let i = 0; i < data.data.trails.length; i++) {
+        for (let i = 0; i < data.trails.length; i++) {
           // console.log(data.data.trails[i].name)
         }
         this.setState({
-          trails: data.data.trails
+          trails: data.trails
         });
       });
   }
@@ -67,7 +67,10 @@ class API extends Component {
       .get(
         `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${
           this.state.zip
-        }&key=zlysdycvm08e9fnk`
+        }&key=zlysdycvm08e9fnk`,
+        {
+          headers: { Accept: "application/json" }
+        }
       )
       .then(res => {
         this.setState({
@@ -79,11 +82,13 @@ class API extends Component {
 
   handleSaveHike = trail => {
     const { id } = trail;
-    Axios.put("/v1/saveHike/", {
-      id
-    }).then(res => {
-      console.log(res.data);
-    });
+    axios
+      .put("/v1/saveHike/", {
+        id
+      })
+      .then(res => {
+        console.log(res.data);
+      });
   };
 
   render() {

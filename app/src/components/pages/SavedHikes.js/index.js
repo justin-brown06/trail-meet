@@ -1,31 +1,38 @@
 import React, { Component } from "react";
-import axios from "axios";
+import Axios from "axios";
+import { connect } from "react-redux";
 
 class SavedHikes extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      SavedTrails: []
+      error: null,
+      isLoaded: false,
+      trails: []
     };
   }
 
   componentDidMount() {
-    const instance = axios.create({
-      baseURL:
-        "https://www.hikingproject.com/data/get-trails-by-id?ids=7001635,7002742,7000108,7002175,7005207&key=200394657-1ebddf3d823768d96c230dd00cd31c30",
-      headers: { "Access-Control-Allow-Origin": "*" }
-    });
-
-    instance.get().then(data => {
-      console.log(data);
-      for (let i = 0; i < data.data.SavedTrails.length; i++) {}
-      this.setState({
-        trails: data.data.SavedTrails
-      });
-    });
+    Axios.get("/v1/savedHikes").then(
+      result => {
+        console.log(result.data);
+        this.setState({
+          isLoaded: true,
+          trails: result.data.trails
+        });
+      },
+      error => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    );
   }
 
   render() {
+    const { trails } = this.state;
+    console.log(trails);
     return (
       <div className="App">
         <section className="hero">
@@ -37,48 +44,59 @@ class SavedHikes extends Component {
         </section>
 
         <br />
-
-        <table className="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>
-                <abbr title="Trail">Trail Name</abbr>
-              </th>
-              <th>
-                <abbr title="Difficulty">Difficulty</abbr>
-              </th>
-              <th>
-                <abbr title="Length">Length (miles)</abbr>
-              </th>
-              <th>
-                <abbr title="Location">Location </abbr>
-              </th>
-              <th>
-                <abbr title="image">Image</abbr>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.SavedTrails.map(SavedTrails => {
-              return (
-                <tr>
-                  <td>{SavedTrails.name}</td>
-                  <td>{SavedTrails.difficulty}</td>
-                  <td>{SavedTrails.length}</td>
-                  <td>
-                    {SavedTrails.latitude}, {SavedTrails.longitude}
-                  </td>
-                  <td>
-                    <img src={SavedTrails.imgSqSmall} />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <section>
+          <div className="container">
+            <div className="tile is-ancestor">
+              <div className="tile is-12 is-vertical is-parent">
+                <div className="tile is-child box">
+                  <table className="table is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          <abbr title="Trail">Trail Name</abbr>
+                        </th>
+                        <th>
+                          <abbr title="Difficulty">Difficulty</abbr>
+                        </th>
+                        <th>
+                          <abbr title="Length">Length (miles)</abbr>
+                        </th>
+                        <th>
+                          <abbr title="Location">Location </abbr>
+                        </th>
+                        <th>
+                          <abbr title="image">Image</abbr>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.trails !== 0 &&
+                        this.state.trails.map(trail => (
+                          <tr key={trail.name}>
+                            <td>{trail.name}</td>
+                            <td>{trail.difficulty}</td>
+                            <td>{trail.length}</td>
+                            <td>
+                              {trail.latitude}, {trail.longitude}
+                            </td>
+                            <td>
+                              <img src={trail.imgSqSmall} />
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
 }
 
-export default SavedHikes;
+export default connect(
+  null,
+  null
+)(SavedHikes);

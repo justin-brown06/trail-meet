@@ -5,6 +5,7 @@ const config = require("../../config");
 const passport = require("passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
+const axios = require("axios");
 
 const hikesController = require("../../controllers/userController");
 
@@ -38,21 +39,27 @@ router.post("/signin", requireSignin, function(req, res) {
 router.put("/saveHike/", requireAuth, hikesController.update);
 
 router.get("/savedHikes", requireAuth, function(req, res) {
-  const url =
-    "https://www.hikingproject.com/data/get-trails-by-id?ids=7001635,7002742,7000108,7002175,7005207&key=200394657-1ebddf3d823768d96c230dd00cd31c30";
+  // We are going to have a req.user
+  // Since we have a user we can go ahead and query for their likes
+  db.User.findById(req.user._id).then(dbUser => {
+    const hikeIds = dbUser.savedHikes;
+    if (hikeIds.length === 0) {
+      res.json({ hikes: [] });
+    } else {
+      const url = `https://www.hikingproject.com/data/get-trails-by-id?ids=${hikeIds.join(
+        ","
+      )}&key=200394657-1ebddf3d823768d96c230dd00cd31c30`;
 
-  axios
-    .get(url, {
-      headers: { "Access-Control-Allow-Origin": "*" }
-    })
-    .then(response => {
-      console.log(response);
-      res.send(response); // <= send data to the client
-    })
-    .catch(err => {
-      console.log(err);
-      res.send({ err }); // <= send error
-    });
+      axios
+        .get(url)
+        .then(response => {
+          res.json({ trails: response.data.trails });
+        })
+        .catch(err => {
+          res.send({ err }); // <= send error
+        });
+    }
+  });
 });
 
 router.post("/signup", function(req, res) {
