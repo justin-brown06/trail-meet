@@ -6,14 +6,14 @@ import logo from "./../../../assets/logo.PNG";
 
 function Navbar(props) {
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">      
           <img alt="header-logo" id="logo" src={logo} />
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
+      <div id="navbarBasicExample" className="navbar-menu nav-left">
         <div className="navbar-start">
           <Link to="/" className="navbar-item">
             Home

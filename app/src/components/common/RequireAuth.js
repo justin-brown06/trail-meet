@@ -9,19 +9,19 @@ const RequireAuth = ComposedComponent => {
       if (!this.props.authenticated) {
         this.props.history.push("/");
       }
-    }
+    };
 
     // Compare new props coming in
     componentWillUpdate(nextProps) {
       if (!this.props.authenticated) {
         this.props.history.push("/");
       }
-    }
+    };
 
     render() {
       return <ComposedComponent {...this.props} />;
     }
-  }
+  };
 
   const mapStateToProps = state => {
     return {
