@@ -28,12 +28,29 @@ class API extends Component {
                     console.log(data);
                     for (let i = 0; i < data.data.trails.length; i++) {
                         // console.log(data.data.trails[i].name)
-
                     };
                     this.setState({
                         trails: data.data.trails
                     });
                 });
+            //   axios.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0&callback=initMap") .then((geocoder, map, infowindow) => {
+            //         const lat = trail.latitude;
+            //         const lng = trail.longitude;
+            //         let latlngStr = lat + ", " + lng;
+            //         let latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+            //         geocoder.geocode({'location': latlng}, function(results, status){
+            //             if(status === "OK"){
+            //                 if(results[0]){
+            //                     map.setZoom(11);
+            //                     let marker = new google.maps.Marker({
+            //                         position: latlng,
+            //                         map: map
+            //                     })
+            //                     infowindow.setContent(result[0].formatted_address);
+            //                 }
+            //             }
+            //         })
+            //   })  
         });
     };
 
