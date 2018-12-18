@@ -69,12 +69,12 @@ class API extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    fetch (
-        `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`,
-        {
-          headers: { Accept: "application/json" }
-        }
-      )
+    fetch(
+      `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`,
+      {
+        headers: { Accept: "application/json" }
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -88,11 +88,11 @@ class API extends Component {
   getAddress(coords) {
     let location = `${coords[0]},${coords[1]}`
     this.setState({
-      address:[]
+      address: []
     })
 
-    fetch ("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
-      .then( res => res.json())
+    fetch("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+      .then(res => res.json())
       .then((data) => {
         // console.log(data.results[0].formatted_address)
         this.setState({
@@ -101,27 +101,66 @@ class API extends Component {
       });
   };
 
+
+  sortName() {
+    let table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("myTable");
+    switching = true;
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[0];
+        y = rows[i + 1].getElementsByTagName("TD")[0];
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+  }
+
+
   render() {
     return (
       <div className="App">
-      <section className="level">
-      <div className="title level-left">Find a Trail!</div>
-        <div id="zip" className="level-right">
-          <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
-          <button className="button is-info" onClick={this.handleSubmit} >Submit</button>
-        </div>
+        <section className="level">
+          <div className="title level-left">Find a Trail!</div>
+          <div id="zip" className="level-right">
+            <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
+            <button className="button is-info" onClick={this.handleSubmit} >Submit</button>
+          </div>
         </section>
-        <table className="table is-fullwidth">
+        <table id="myTable" className="table is-fullwidth">
           <thead>
             <tr>
               <th>
                 <span title="save">Save Hike</span>
               </th>
-              <th><span>Trail Name</span></th>
-              <th onClick={this.props.DifficultyModal}><abbr title="Select for Difficulty Legend"> <span className="is-white">Difficulty</span></abbr></th>
-              <th><span>Length (miles)</span></th>
+              <th>
+                <span className="is-button" onClick={this.sortName}> 
+                <span role="img" aria-label="arrow">⏬</span>
+                </span>
+                <span>Trail Name</span></th>
+
+              <th onClick={this.props.DifficultyModal}>
+                <span className="is-button"> 
+                <span role="img" aria-label="arrow">⏬</span>
+                </span>
+                <abbr title="Select for Difficulty Legend"><span className="is-white">Difficulty</span></abbr></th>
+
+              <th className="has-text-center"><span className="is-button">
+              <span  role="img" aria-label="arrow" >⏬</span>
+              </span>
+                <span>Length (miles)</span></th>
+
               <th><span>Location </span></th>
-              <th><span>Image</span></th>
+              <th className="is-hidden-mobile"><span>Image</span></th>
             </tr>
           </thead>
           <tbody>
@@ -146,7 +185,7 @@ class API extends Component {
                   <td >{trail.difficulty}</td>
                   <td>{trail.length}</td>
                   <td>{this.state.address[i]}</td>
-                  <td><img src={trail.imgSqSmall} alt="" /></td>
+                  <td className="is-hidden-mobile"><img src={trail.imgSqSmall} alt="" /></td>
                 </tr>
               )
             })}
