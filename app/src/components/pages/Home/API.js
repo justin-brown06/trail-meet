@@ -3,7 +3,19 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toggleModal } from "../../../actions";
 import "./style/style.css";
-import Data from "./data.json"
+// import data from "./data.json"
+
+import trail1 from './assets/trail1.jpg'
+import trail2 from './assets/trail2.jpg'
+import trail3 from './assets/trail3.jpg'
+import trail4 from './assets/trail4.jpg'
+import trail5 from './assets/trail5.jpg'
+import trail6 from './assets/trail6.jpg'
+import trail7 from './assets/trail7.jpg'
+import trail8 from './assets/trail8.jpg'
+import trail9 from './assets/trail9.jpg'
+import trail10 from './assets/trail10.jpg'
+
 
 import { Link } from "react-router-dom";
 // import Geocode from "react-geocode";
@@ -18,7 +30,6 @@ class API extends Component {
       zip: "",
       location: [],
       address: [],
-      data
     };
   };
 
