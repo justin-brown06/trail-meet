@@ -2,43 +2,43 @@
     "data": [
         {
             "id": 0,
-            "source": "./assets/trail2.jpg"
+            "source": "./assets/trail1.jpg"
         },
         {
             "id": 1,
-            "source": "app/src/components/pages/Home/assets/trail2.JPG"
+            "source": "./assets/trail2.jpg"
         },
         {
             "id": 2,
-            "source": "app/src/components/pages/Home/assets/trail3.JPG"
+            "source": "./assets/trail3.jpg"
         },
         {
             "id": 3,
-            "source": "app/src/components/pages/Home/assets/trail4.JPG"
+            "source": "./assets/trail4.jpg"
         },
         {
             "id": 4,
-            "source": "app/src/components/pages/Home/assets/trail5.JPG"
+            "source": "./assets/trail5.jpg"
         },
         {
             "id": 5,
-            "source": "app/src/components/pages/Home/assets/trail6.JPG"
+            "source": "./assets/trail6.jpg"
         },
         {
             "id": 6,
-            "source": "app/src/components/pages/Home/assets/trail7.JPG"
+            "source": "./assets/trail7.jpg"
         },
         {
             "id": 7,
-            "source": "app/src/components/pages/Home/assets/trail8.JPG"
+            "source": "./assets/trail8.jpg"
         },
         {
             "id": 8,
-            "source": "app/src/components/pages/Home/assets/trail9.JPG"
+            "source": "./assets/trail9.jpg"
         },
         {
             "id": 9,
-            "source": "app/src/components/pages/Home/assets/trail10.JPG"
+            "source": "./assets/trail10.jpg"
         }
     ]
 }

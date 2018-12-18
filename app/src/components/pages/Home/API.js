@@ -3,18 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toggleModal } from "../../../actions";
 import "./style/style.css";
-// import data from "./data.json"
-
-import trail1 from './assets/trail1.jpg'
-import trail2 from './assets/trail2.jpg'
-import trail3 from './assets/trail3.jpg'
-import trail4 from './assets/trail4.jpg'
-import trail5 from './assets/trail5.jpg'
-import trail6 from './assets/trail6.jpg'
-import trail7 from './assets/trail7.jpg'
-import trail8 from './assets/trail8.jpg'
-import trail9 from './assets/trail9.jpg'
-import trail10 from './assets/trail10.jpg'
+import data from "./data.json"
 
 
 import { Link } from "react-router-dom";
@@ -61,8 +50,10 @@ class API extends Component {
         for (let i = 0; i < data.trails.length; i++) {
           // console.log(data.data.trails[i].name)
           let coords = [data.trails[i].latitude, data.trails[i].longitude]
+          let img = data.trails[i].imgSqSmall
           // console.log(coords);
           this.getAddress(coords);
+          this.checkImg(img)
         }
         this.setState({
           trails: data.trails
@@ -115,7 +106,7 @@ class API extends Component {
   };
 
   checkImg = (trail) => {
-    var altImg = [trail1, trail2, trail3, trail4, trail5, trail6, trail7, trail8, trail9, trail10];
+    var altImg = data;
     var img = altImg[Math.floor(Math.random() * altImg.length)];
     return trail.imgSqSmall ? trail.imgSqSmall : img;
   };
