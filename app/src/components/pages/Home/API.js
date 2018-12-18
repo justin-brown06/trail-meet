@@ -104,10 +104,13 @@ class API extends Component {
   render() {
     return (
       <div className="App">
-        <div>
+      <section className="level">
+      <div className="title level-left">Find a Trail!</div>
+        <div id="zip" className="level-right">
           <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
-          <button className="button" onClick={this.handleSubmit} >Submit</button>
+          <button className="button is-info" onClick={this.handleSubmit} >Submit</button>
         </div>
+        </section>
         <table className="table is-fullwidth">
           <thead>
             <tr>
