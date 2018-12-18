@@ -101,7 +101,7 @@ class API extends Component {
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{trail.latitude}, {trail.longitude}</td>
-                                    <td><img src={this.checkImg(trail)} alt="" /></td>
+                                    <td><img src={this.checkImg(trail)} alt="" className="alt-img" /></td>
                                 </tr>
                             )
                         })}
