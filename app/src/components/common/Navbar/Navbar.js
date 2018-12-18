@@ -1,19 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleModal } from "./../../../actions";
+import { toggleModal, authenticateUser, } from "./../../../actions";
 import { Link } from "react-router-dom";
 import logo from "./../../../assets/logo.PNG";
 
+function hide () {
+ let signUp = document.getElementById("signUp");
+ let logIn = document.getElementById("logIn");
+ signUp.classList.add("is-hidden");
+ logIn.classList.add("is-hidden");
+}
+
+if(authenticateUser === true) {
+  hide();
+ }
+
+
 function Navbar(props) {
   return (
-    <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation" >
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">      
+        <a className="navbar-item" href="/">
           <img alt="header-logo" id="logo" src={logo} />
         </a>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu nav-left">
+      <div id="navbarBasicExample" className="navbar-brand nav-left">
         <div className="navbar-start">
           <Link to="/" className="navbar-item">
             Home
@@ -27,15 +39,16 @@ function Navbar(props) {
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
-            <button onClick={props.signUpModal} className="button is-info">
+            <button id="signUp" onClick={props.signUpModal} className="button is-info">
               <strong>Sign up</strong>
             </button>
-            <button onClick={props.loginModal} className="button is-info">
+            <button id="logIn" onClick={props.loginModal} className="button is-info">
               Log in
             </button>
           </div>
         </div>
       </div>
+
     </nav>
   );
 }

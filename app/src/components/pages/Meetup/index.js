@@ -1,23 +1,14 @@
 import React from "react";
+import Events from "./Events";
+import Comments from "./Comments";
 
 class Meetup extends React.Component {
-    render(){
+    render() {
         return (
-            <div>
-                <div className="App">
-                    <section className="hero">
-                        <h1>Events to go here</h1>
-                    </section>
-    
-                    <br />
-    
-                    <section>
-                        <div className="container">
-                            <h1 className="title is-4">Comments and replies to go here</h1>
-                            <p>{this.props.match.params.id}</p>
-                        </div>
-                    </section>
-    
+            <div className="App">
+                <div>
+                    <Events />
+                    <Comments />
                 </div>
             </div>
         )
