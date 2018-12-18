@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toggleModal } from "../../../actions";
 import "./style/style.css";
+import Data from "./data.json"
 
 import { Link } from "react-router-dom";
 // import Geocode from "react-geocode";
@@ -16,7 +17,8 @@ class API extends Component {
       lon: "",
       zip: "",
       location: [],
-      address: []
+      address: [],
+      data
     };
   };
 
@@ -69,12 +71,12 @@ class API extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    fetch (
-        `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`,
-        {
-          headers: { Accept: "application/json" }
-        }
-      )
+    fetch(
+      `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`,
+      {
+        headers: { Accept: "application/json" }
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -88,11 +90,11 @@ class API extends Component {
   getAddress(coords) {
     let location = `${coords[0]},${coords[1]}`
     this.setState({
-      address:[]
+      address: []
     })
 
-    fetch ("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
-      .then( res => res.json())
+    fetch("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+      .then(res => res.json())
       .then((data) => {
         // console.log(data.results[0].formatted_address)
         this.setState({
@@ -101,15 +103,21 @@ class API extends Component {
       });
   };
 
+  checkImg = (trail) => {
+    var altImg = [trail1, trail2, trail3, trail4, trail5, trail6, trail7, trail8, trail9, trail10];
+    var img = altImg[Math.floor(Math.random() * altImg.length)];
+    return trail.imgSqSmall ? trail.imgSqSmall : img;
+  };
+
   render() {
     return (
       <div className="App">
-      <section className="level">
-      <div className="title level-left">Find a Trail!</div>
-        <div id="zip" className="level-right">
-          <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
-          <button className="button is-info" onClick={this.handleSubmit} >Submit</button>
-        </div>
+        <section className="level">
+          <div className="title level-left">Find a Trail!</div>
+          <div id="zip" className="level-right">
+            <input id="zipcode" className="input" value={this.state.zip} type="text" name="zip" onChange={this.handleInputChange} placeholder="Enter Zip Code" />
+            <button className="button is-info" onClick={this.handleSubmit} >Submit</button>
+          </div>
         </section>
         <table className="table is-fullwidth">
           <thead>
