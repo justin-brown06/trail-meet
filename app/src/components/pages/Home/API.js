@@ -75,16 +75,21 @@ class API extends Component {
           headers: { Accept: "application/json" }
         }
       )
-      .then(res => {
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
         this.setState({
-          location: [res.data.output[0].latitude, res.data.output[0].longitude]
+          location: [data.output[0].latitude, data.output[0].longitude]
         });
         this.getHikes();
-      });
+      })
   };
 
   getAddress(coords) {
     let location = `${coords[0]},${coords[1]}`
+    this.setState({
+      address:[]
+    })
 
     fetch ("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
       .then( res => res.json())
