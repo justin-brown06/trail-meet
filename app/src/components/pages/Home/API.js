@@ -46,7 +46,7 @@ class API extends Component {
                 // console.log(data);
                 for (let i = 0; i < data.data.trails.length; i++) {
                     // console.log(data.data.trails[i].name)
-                    let coords= [data.data.trails[i].latitude, data.data.trails[i].longitude]
+                    let coords = [data.data.trails[i].latitude, data.data.trails[i].longitude]
                     console.log(coords);
                     this.getAddress(coords);
                 };
@@ -99,7 +99,7 @@ class API extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.trails.map(trail => {
+                        {this.state.trails.map((trail, i) => {
                             return (
                                 <tr>
                                     <td>
@@ -110,7 +110,7 @@ class API extends Component {
                                     </td>
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
-                                    <td>{this.state.address}</td>
+                                    <td>{this.state.address[i]}</td>
                                     <td><img src={trail.imgSqSmall} alt="" /></td>
                                 </tr>
                             )
