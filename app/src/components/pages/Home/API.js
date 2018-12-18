@@ -48,7 +48,7 @@ class API extends Component {
         for (let i = 0; i < data.trails.length; i++) {
           // console.log(data.data.trails[i].name)
           let coords = [data.trails[i].latitude, data.trails[i].longitude]
-          console.log(coords);
+          // console.log(coords);
           this.getAddress(coords);
         }
         this.setState({
@@ -64,7 +64,7 @@ class API extends Component {
         id
       })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
       });
   };
   handleSubmit = event => {
@@ -89,7 +89,7 @@ class API extends Component {
     fetch ("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
       .then( res => res.json())
       .then((data) => {
-        console.log(data.results[0].formatted_address)
+        // console.log(data.results[0].formatted_address)
         this.setState({
           address: [...this.state.address, data.results[0].formatted_address]
         })

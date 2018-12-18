@@ -10,6 +10,7 @@ class SavedHikes extends Component {
       error: null,
       isLoaded: false,
       trails: [],
+      location: [],
       address: []
     };
   }
@@ -22,6 +23,10 @@ class SavedHikes extends Component {
           isLoaded: true,
           trails: result.data.trails
         });
+        for (let i = 0; i < result.data.trails.length; i++) {
+          let coords = [result.data.trails[i].latitude, result.data.trails[i].longitude]
+          this.getAddress(coords);
+        }
       },
       error => {
         this.setState({
@@ -38,6 +43,19 @@ class SavedHikes extends Component {
     Axios.delete("/v1/removeHike/" + id).then(res => {
       console.log(id);
     });
+  };
+
+  getAddress(coords) {
+    let location = `${coords[0]},${coords[1]}`
+
+    fetch ("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+      .then( res => res.json())
+      .then((data) => {
+        // console.log(data.results[0].formatted_address)
+        this.setState({
+          address: [...this.state.address, data.results[0].formatted_address]
+        })
+      });
   };
 
   render() {
