@@ -36,7 +36,22 @@ router.post("/signin", requireSignin, function(req, res) {
   });
 });
 
-router.put("/saveHike/", requireAuth, hikesController.update);
+router.put("/saveHike", requireAuth, hikesController.update);
+
+router.delete("/removeHike/:id", requireAuth, function(req, res) {
+  console.log(req.params.id);
+  console.log(req.user);
+  db.User.findOneAndUpdate(
+    { _id: req.user._id },
+    {
+      $pull: { savedHikes: parseInt(req.params.id) }
+    },
+    { safe: true, upsert: true }
+  )
+    .then(result => console.log("RESULT", result))
+    .catch(err => console.log("ERROR", err));
+  res.send("Delete route hit");
+});
 
 router.get("/savedHikes", requireAuth, function(req, res) {
   // We are going to have a req.user
