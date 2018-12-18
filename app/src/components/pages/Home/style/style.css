@@ -9,6 +9,21 @@ width: 100%;
 height: 100%;
 }
 
+#zip{
+    width: 20%;
+}
+
+@media screen and (max-width: 760px) {
+ .level {
+     display: flex;
+ }
+ .table {
+     table-layout: fixed;
+     font-size: 12px;
+ }
+}
+
+
 td{
     font-family: 'Comfortaa', cursive;
 }
@@ -17,6 +32,7 @@ td{
     height: 100px;
     width: 100px;
 }
+
 
 
 

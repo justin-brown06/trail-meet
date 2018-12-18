@@ -22,7 +22,6 @@
     "react-geocode": "^0.1.2"
   },
   "scripts": {
-    
     "sass:build": "node-sass-chokidar --include-path ./node_modules/ ./src/styles/sass/index.scss -o ./src/styles/css/",
     "sass:watch": "node-sass-chokidar --include-path ./node_modules/ ./src/styles/sass/index.scss -o ./src/styles/css/ --watch",
     "start": "react-scripts start",

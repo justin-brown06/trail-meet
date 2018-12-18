@@ -1,6 +1,6 @@
 import React from "react";
-import API from './API'
-import "./style/style.css"
+import API from "./API";
+import "./style/style.css";
 
 
 
@@ -12,9 +12,7 @@ function Home(props) {
           <div className="hero-body">
             <div className="container">
               <br />
-              <h1 className="title has-text-white">
-                Trail Meet's Home Page!
-              </h1>
+              <h1 className="title has-text-white">Trail Meet's Home Page!</h1>
             </div>
           </div>
         </section>
@@ -25,13 +23,13 @@ function Home(props) {
           <div className="tile is-ancestor">
             <div className="tile is-12 is-vertical is-parent">
               <div className="tile is-child box">
-                <h1 className="title is-4 "> Find a trail!</h1>
                 <API />
               </div>
             </div>
           </div>
         </div >
       </section>
+<<<<<<< HEAD
       </div>
       )
     
@@ -39,3 +37,10 @@ function Home(props) {
   
   export default Home;
   
+=======
+    </div>
+  );
+}
+
+export default Home;
+>>>>>>> 3856b5d17bc55bde0d1ca4309aa9f73a0d528eb4
