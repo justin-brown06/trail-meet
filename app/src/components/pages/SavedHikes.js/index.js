@@ -9,7 +9,9 @@ class SavedHikes extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      trails: []
+      trails: [],
+      location: [],
+      address: []
     };
   }
 
@@ -21,6 +23,13 @@ class SavedHikes extends Component {
           isLoaded: true,
           trails: result.data.trails
         });
+        for (let i = 0; i < result.data.trails.length; i++) {
+          let coords = [
+            result.data.trails[i].latitude,
+            result.data.trails[i].longitude
+          ];
+          this.getAddress(coords);
+        }
       },
       error => {
         this.setState({
@@ -38,6 +47,23 @@ class SavedHikes extends Component {
       console.log(id);
     });
   };
+
+  getAddress(coords) {
+    let location = `${coords[0]},${coords[1]}`;
+
+    fetch(
+      "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+        location +
+        "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0"
+    )
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data.results[0].formatted_address)
+        this.setState({
+          address: [...this.state.address, data.results[0].formatted_address]
+        });
+      });
+  }
 
   render() {
     const { trails } = this.state;
@@ -89,16 +115,16 @@ class SavedHikes extends Component {
                       </thead>
                       <tbody>
                         {this.state.trails !== 0 &&
-                          this.state.trails.map(trail => (
+                          this.state.trails.map((trail, i) => (
                             <tr key={trail.name}>
                               <td>
-                                <a
+                                <button
                                   onClick={() => this.handleRemoveHike(trail)}
                                   className="button is-info"
                                 >
                                   {" "}
                                   Remove
-                                </a>
+                                </button>
                               </td>
                               <td>
                                 <Link to={`/${trail.id}`}>
@@ -121,11 +147,9 @@ class SavedHikes extends Component {
                               </td>
                               <td>{trail.difficulty}</td>
                               <td>{trail.length}</td>
+                              <td>{this.state.address[i]}</td>
                               <td>
-                                {trail.latitude}, {trail.longitude}
-                              </td>
-                              <td>
-                                <img src={trail.imgSqSmall} />
+                                <img src={trail.imgSqSmall} alt="" />
                               </td>
                             </tr>
                           ))}

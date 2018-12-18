@@ -20,6 +20,12 @@ function LoginModal(props) {
       Axios.defaults.headers.common["Authorization"] = res.data.token;
       props.closeModal();
       props.authorize();
+      
+      //hiding class once logged in
+      let signUp = document.getElementById("signUp");
+      let logIn = document.getElementById("logIn");
+      signUp.classList.add("is-hidden");
+      logIn.classList.add("is-hidden");
     });
   }
 
