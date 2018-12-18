@@ -9,7 +9,8 @@ class SavedHikes extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      trails: []
+      trails: [],
+      address: []
     };
   }
 
@@ -86,16 +87,16 @@ class SavedHikes extends Component {
                     </thead>
                     <tbody>
                       {this.state.trails !== 0 &&
-                        this.state.trails.map(trail => (
+                        this.state.trails.map((trail, i) => (
                           <tr key={trail.name}>
                             <td>
-                              <a
+                              <button
                                 onClick={() => this.handleRemoveHike(trail)}
                                 className="button is-info"
                               >
                                 {" "}
                                 Remove
-                              </a>
+                              </button>
                             </td>
                             <td>
                               <Link to={`/${trail.id}`}>
@@ -119,10 +120,10 @@ class SavedHikes extends Component {
                             <td>{trail.difficulty}</td>
                             <td>{trail.length}</td>
                             <td>
-                              {trail.latitude}, {trail.longitude}
+                              {this.state.address[i]}
                             </td>
                             <td>
-                              <img src={trail.imgSqSmall} />
+                              <img src={trail.imgSqSmall} alt="" />
                             </td>
                           </tr>
                         ))}

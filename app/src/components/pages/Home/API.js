@@ -41,13 +41,13 @@ class API extends Component {
     let location = `lat=${this.state.location[0]}&lon=${this.state.location[1]}`;
 
     fetch(
-      `https://www.hikingproject.com/data/get-trails?${location}&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30`
+      "https://www.hikingproject.com/data/get-trails?" + location + "&maxDistance=10&key=200394657-1ebddf3d823768d96c230dd00cd31c30"
     )
       .then(res => res.json())
       .then(data => {
         for (let i = 0; i < data.trails.length; i++) {
           // console.log(data.data.trails[i].name)
-          let coords = [data.data.trails[i].latitude, data.data.trails[i].longitude]
+          let coords = [data.trails[i].latitude, data.trails[i].longitude]
           console.log(coords);
           this.getAddress(coords);
         }
@@ -69,11 +69,8 @@ class API extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    axios
-      .get(
-        `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${
-          this.state.zip
-        }&key=zlysdycvm08e9fnk`,
+    fetch (
+        `https://api.promaptools.com/service/us/zip-lat-lng/get/?zip=${this.state.zip}&key=zlysdycvm08e9fnk`,
         {
           headers: { Accept: "application/json" }
         }
@@ -89,11 +86,12 @@ class API extends Component {
   getAddress(coords) {
     let location = `${coords[0]},${coords[1]}`
 
-    axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+    fetch ("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + location + "&key=AIzaSyD7XeO6If1j_8pp2FQeG7bgd6EUp-92ER0")
+      .then( res => res.json())
       .then((data) => {
-        console.log(data.data.results[0].formatted_address)
+        console.log(data.results[0].formatted_address)
         this.setState({
-          address: [...this.state.address, data.data.results[0].formatted_address]
+          address: [...this.state.address, data.results[0].formatted_address]
         })
       });
   };
@@ -109,7 +107,7 @@ class API extends Component {
           <thead>
             <tr>
               <th>
-                <abbr title="save">Save Hike</abbr>
+                <span title="save">Save Hike</span>
               </th>
               <th><span>Trail Name</span></th>
               <th onClick={this.props.DifficultyModal}><abbr title="Select for Difficulty Legend"> <span className="is-white">Difficulty</span></abbr></th>
