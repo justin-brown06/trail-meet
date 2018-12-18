@@ -41,100 +41,104 @@ class SavedHikes extends Component {
 
   render() {
     const { trails } = this.state;
-    console.log(trails);
-    return (
-      <div className="App">
-        <section className="hero">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title has-text-black">Saved Hikes</h1>
+    // console.log(this.state.trails);
+    if (!this.state.trails) {
+      return <p>You have no saved hikes</p>;
+    } else {
+      return (
+        <div className="App">
+          <section className="hero">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title has-text-black">Saved Hikes</h1>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <br />
-        <section>
-          <div className="container">
-            <div className="tile is-ancestor">
-              <div className="tile is-12 is-vertical is-parent">
-                <div className="tile is-child box">
-                  <table className="table is-fullwidth">
-                    <thead>
-                      <tr>
-                        <th>
-                          <abbr title="remove">Remove Hike</abbr>
-                        </th>
-                        <th>
-                          <abbr title="Trail">Trail Name</abbr>
-                        </th>
-                        <th onClick={this.props.DifficultyModal}>
-                          <abbr title="Select for Difficulty Legend">
-                            {" "}
-                            <span className="is-white">Difficulty</span>
-                          </abbr>
-                        </th>
-                        <th>
-                          <abbr title="Length">Length (miles)</abbr>
-                        </th>
-                        <th>
-                          <abbr title="Location">Location </abbr>
-                        </th>
-                        <th>
-                          <abbr title="image">Image</abbr>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.trails !== 0 &&
-                        this.state.trails.map(trail => (
-                          <tr key={trail.name}>
-                            <td>
-                              <a
-                                onClick={() => this.handleRemoveHike(trail)}
-                                className="button is-info"
-                              >
-                                {" "}
-                                Remove
-                              </a>
-                            </td>
-                            <td>
-                              <Link to={`/${trail.id}`}>
-                                {" "}
-                                <h1>{trail.name}</h1>
-                              </Link>
-                              <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href={
-                                  "https://www.hikingproject.com/trail/" +
-                                  trail.id
-                                }
-                              >
-                                <br />
-                                <button className="button is-rounded is-dark is-small">
-                                  Additional Information
-                                </button>
-                              </a>
-                            </td>
-                            <td>{trail.difficulty}</td>
-                            <td>{trail.length}</td>
-                            <td>
-                              {trail.latitude}, {trail.longitude}
-                            </td>
-                            <td>
-                              <img src={trail.imgSqSmall} />
-                            </td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
+          <br />
+          <section>
+            <div className="container">
+              <div className="tile is-ancestor">
+                <div className="tile is-12 is-vertical is-parent">
+                  <div className="tile is-child box">
+                    <table className="table is-fullwidth">
+                      <thead>
+                        <tr>
+                          <th>
+                            <abbr title="remove">Remove Hike</abbr>
+                          </th>
+                          <th>
+                            <abbr title="Trail">Trail Name</abbr>
+                          </th>
+                          <th onClick={this.props.DifficultyModal}>
+                            <abbr title="Select for Difficulty Legend">
+                              {" "}
+                              <span className="is-white">Difficulty</span>
+                            </abbr>
+                          </th>
+                          <th>
+                            <abbr title="Length">Length (miles)</abbr>
+                          </th>
+                          <th>
+                            <abbr title="Location">Location </abbr>
+                          </th>
+                          <th>
+                            <abbr title="image">Image</abbr>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.state.trails !== 0 &&
+                          this.state.trails.map(trail => (
+                            <tr key={trail.name}>
+                              <td>
+                                <a
+                                  onClick={() => this.handleRemoveHike(trail)}
+                                  className="button is-info"
+                                >
+                                  {" "}
+                                  Remove
+                                </a>
+                              </td>
+                              <td>
+                                <Link to={`/${trail.id}`}>
+                                  {" "}
+                                  <h1>{trail.name}</h1>
+                                </Link>
+                                <a
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  href={
+                                    "https://www.hikingproject.com/trail/" +
+                                    trail.id
+                                  }
+                                >
+                                  <br />
+                                  <button className="button is-rounded is-dark is-small">
+                                    Additional Information
+                                  </button>
+                                </a>
+                              </td>
+                              <td>{trail.difficulty}</td>
+                              <td>{trail.length}</td>
+                              <td>
+                                {trail.latitude}, {trail.longitude}
+                              </td>
+                              <td>
+                                <img src={trail.imgSqSmall} />
+                              </td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-    );
+          </section>
+        </div>
+      );
+    }
   }
 }
 
