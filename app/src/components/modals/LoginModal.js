@@ -19,6 +19,12 @@ function LoginModal(props) {
       console.log(res.data);
       props.closeModal();
       props.authorize();
+      
+      //hiding class once logged in
+      let signUp = document.getElementById("signUp");
+      let logIn = document.getElementById("logIn");
+      signUp.classList.add("is-hidden");
+      logIn.classList.add("is-hidden");
     });
   }
 

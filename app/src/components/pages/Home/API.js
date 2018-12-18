@@ -98,7 +98,7 @@ class API extends Component {
                             <th onClick={this.props.DifficultyModal}><abbr title="Select for Difficulty Legend"> <span className="is-white">Difficulty</span></abbr></th>
                             <th><span>Length (miles)</span></th>
                             <th><span>Location </span></th>
-                            <th><span>Image</span></th>
+                            <th className="is-hidden-mobile"><span>Image</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -114,7 +114,7 @@ class API extends Component {
                                     <td >{trail.difficulty}</td>
                                     <td>{trail.length}</td>
                                     <td>{this.state.address[i]}</td>
-                                    <td><img src={trail.imgSqSmall} alt="" /></td>
+                                    <td className="is-hidden-mobile"><img src={trail.imgSqSmall} alt="" /></td>
                                 </tr>
                             )
                         })}
