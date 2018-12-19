@@ -13,7 +13,8 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "react-geocode": "^0.1.2"
+    "react-geocode": "^0.1.2",
+    "redux-persist": "^5.10.0"
   },
   "_comments": [
     ""

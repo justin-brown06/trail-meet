@@ -14,8 +14,7 @@ class SavedHikes extends Component {
       address: []
     };
   }
-
-  componentDidMount() {
+  getSavedHikes = () => {
     Axios.get("/v1/savedHikes").then(
       result => {
         console.log(result.data);
@@ -38,6 +37,9 @@ class SavedHikes extends Component {
         });
       }
     );
+  };
+  componentDidMount() {
+    this.getSavedHikes();
   }
 
   handleRemoveHike = trail => {
@@ -45,6 +47,8 @@ class SavedHikes extends Component {
     const { id } = trail;
     Axios.delete("/v1/removeHike/" + id).then(res => {
       console.log(id);
+      alert("Hike has been removed");
+      this.getSavedHikes();
     });
   };
 
