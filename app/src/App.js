@@ -11,8 +11,7 @@ import RequireAuth from "./components/common/RequireAuth";
 // Pages
 import Home from "./components/pages/Home";
 import SavedHikes from "./components/pages/SavedHikes.js";
-import Meetup from "./components/pages/Meetup"
-
+import Meetup from "./components/pages/Meetup";
 import rootReducer from "./reducers";
 
 const store = createStore(
@@ -34,9 +33,7 @@ function App(props) {
                 path="/savedHikes"
                 component={RequireAuth(SavedHikes)}
               />
-              <Route path="/:id"
-              component={RequireAuth(Meetup)}
-              />
+              <Route path="/:id" component={RequireAuth(Meetup)} />
             </Switch>
           </div>
         </Router>
