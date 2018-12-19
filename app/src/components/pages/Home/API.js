@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toggleModal } from "../../../actions";
 import "./style/style.css";
+import data from "./data.json"
+
 
 import { Link } from "react-router-dom";
 // import Geocode from "react-geocode";
@@ -16,7 +18,7 @@ class API extends Component {
       lon: "",
       zip: "",
       location: [],
-      address: []
+      address: [],
     };
   }
 
@@ -50,9 +52,11 @@ class API extends Component {
       .then(data => {
         for (let i = 0; i < data.trails.length; i++) {
           // console.log(data.data.trails[i].name)
-          let coords = [data.trails[i].latitude, data.trails[i].longitude];
+          let coords = [data.trails[i].latitude, data.trails[i].longitude]
+          let img = data.trails[i].imgSqSmall
           // console.log(coords);
           this.getAddress(coords);
+          this.checkImg(img)
         }
         this.setState({
           trails: data.trails
@@ -109,6 +113,12 @@ class API extends Component {
         });
       });
   }
+
+  checkImg = (trail) => {
+    var altImg = data;
+    var img = altImg[Math.floor(Math.random() * altImg.length)];
+    return trail.imgSqSmall ? trail.imgSqSmall : img;
+  };
 
   render() {
     return (
